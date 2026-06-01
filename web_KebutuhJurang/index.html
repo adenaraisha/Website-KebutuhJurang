@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Resmi Desa Kebutuh Jurang</title>
+<style>
+
+/* RESET GLOBAL */
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background:#f4f7fa;
+  color:#222;
+}
+
+/* ===================== NAVBAR ===================== */
+header {
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  background: rgba(255,255,255,0.95);
+  padding: 12px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index:1000;
+}
+
+header .logo-area {
+  display: flex;
+  align-items:center;
+  gap:10px;
+}
+
+header img.logo {
+  width:65px;
+  height:65px;
+  object-fit: contain;
+  display: block;
+}
+
+header .desa-title h1 {
+  font-size:32px;
+  font-weight:bold;
+  color:#222;
+}
+
+header .desa-title p {
+  font-size:14px;
+  color:#666;
+  margin-top:3px;
+}
+
+header nav ul {
+  list-style:none;
+  display:flex;
+  gap:22px;
+}
+
+header nav a {
+  text-decoration:none;
+  font-weight:600;
+  color:#222;
+  font-size:15px;
+}
+
+header nav a:hover {
+  color:#1e5aae;
+}
+
+/* supaya konten tidak tertutup header */
+body { padding-top:90px; }
+
+/* ===================== HERO SECTION ===================== */
+.hero {
+  height: 75vh;
+  background: url('bg-hero.jpg') center/cover no-repeat;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+.hero .overlay {
+  background: rgba(0,0,0,0.45);
+  padding:30px 28px;
+  border-radius:12px;
+  color:white;
+}
+.hero h2 {
+  font-size:36px;
+  font-weight:700;
+}
+.hero p {
+  margin-top:8px;
+  font-size:17px;
+}
+
+/* ===================== CONTENT SECTIONS ===================== */
+.container {
+  width:90%;
+  max-width:1200px;
+  margin:50px auto;
+}
+
+.section {
+  margin-bottom:40px;
+  padding:28px;
+  background:white;
+  border-radius:10px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+.section h3 {
+  margin-bottom:12px;
+  color:#0b3d91;
+  font-size:24px;
+  border-bottom: 2px solid #1e5aae;
+  padding-bottom: 8px;
+}
+
+/* ===================== GALLERY ===================== */
+.gallery {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px,1fr));
+  gap:16px;
+  margin-top: 15px;
+}
+
+.foto-item{
+  background:#fff;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+  transition:0.3s;
+  border: 1px solid #ddd;
+}
+
+.foto-item:hover{
+  transform:translateY(-5px);
+}
+
+.foto-item img {
+  width:100%;
+  height:250px;
+  object-fit:cover;
+  display: block;
+}
+
+.foto-item p{
+  padding:12px;
+  font-size:14px;
+  font-weight:600;
+  text-align:center;
+  color: #333;
+}
+
+/* ===================== FORM ===================== */
+form input, form textarea {
+  width:100%;
+  padding:10px;
+  border:1px solid #aaa;
+  border-radius:8px;
+  margin-bottom:12px;
+}
+form textarea {
+  height: 120px;
+  resize: vertical;
+}
+form button {
+  background:#1e5aae;
+  color:white;
+  padding:10px 18px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight: bold;
+}
+form button:hover {
+  background:#153d7a;
+}
+
+/* ================= STRUKTUR ORGANISASI ================= */
+.struktur-container{
+  margin-top:30px;
+  text-align:center;
+}
+
+.jabatan{
+  display:flex;
+  justify-content:center;
+  margin-bottom:30px;
+}
+
+.box{
+  background:#fff;
+  border:2px solid #222;
+  padding:18px 22px;
+  border-radius:10px;
+  min-width:230px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.box p{
+  font-size:15px;
+  font-weight:600;
+  margin-bottom:8px;
+}
+
+.box h4{
+  color:#c40000;
+  font-size:20px;
+}
+
+.kaur-row,
+.kasi-row,
+.kadus-row{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-bottom:30px;
+}
+
+.kecil{
+  min-width:220px;
+}
+
+.oval{
+  width:210px;
+  height:210px;
+  border:2px solid #222;
+  border-radius:50%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  background:#fff;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.oval p{
+  font-weight:600;
+  margin-bottom:10px;
+}
+
+.oval h4{
+  color:#c40000;
+  font-size:20px;
+  text-align:center;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .box{
+    min-width:100%;
+  }
+  .oval{
+    width:180px;
+    height:180px;
+  }
+}
+
+/* ================= STATISTIK ================= */
+.chart-container{
+  display:flex;
+  flex-direction:column;
+  gap:30px;
+  margin-top:20px;
+}
+
+.chart-box{
+  background:#f9fbff;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.chart-box h4{
+  margin-bottom:20px;
+  color:#0b3d91;
+  font-size:22px;
+}
+
+.bar-item{
+  margin-bottom:18px;
+}
+
+.bar-item span{
+  display:block;
+  margin-bottom:6px;
+  font-weight:600;
+}
+
+.bar{
+  width:100%;
+  height:30px;
+  background:#dbe7ff;
+  border-radius:30px;
+  overflow:hidden;
+}
+
+.fill{
+  height:100%;
+  background:linear-gradient(90deg,#1e5aae,#4da3ff);
+  color:white;
+  font-weight:bold;
+  text-align:right;
+  padding-right:12px;
+  line-height:30px;
+  border-radius:30px;
+}
+
+/* warna batang UMKM */
+.konveksi{ background:linear-gradient(90deg,#1e5aae,#4f8df5); }
+.gorengan{ background:linear-gradient(90deg,#ff9800,#ffc107); }
+.jamur{ background:linear-gradient(90deg,#4caf50,#8bc34a); }
+.air{ background:linear-gradient(90deg,#00bcd4,#4dd0e1); }
+.bengkel{ background:linear-gradient(90deg,#616161,#9e9e9e); }
+.peyek{ background:linear-gradient(90deg,#795548,#a1887f); }
+.pecel{ background:linear-gradient(90deg,#8bc34a,#cddc39); }
+/* ================= NOTIFIKASI FORM ================= */
+.notif-sukses{
+  margin-top:12px;
+  padding:12px;
+  border-radius:8px;
+  background:#d4edda;
+  color:#155724;
+  font-weight:600;
+  display:none;
+  animation:fade 0.3s ease;
+}
+
+@keyframes fade{
+  from{
+    opacity:0;
+    transform:translateY(-5px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+.notif-sukses{
+  display:none;
+  margin-top:15px;
+  padding:12px;
+  background:#d4edda;
+  color:#155724;
+  border-radius:8px;
+  font-weight:bold;
+}
+/* ===================== GALLERY ===================== */
+.gallery {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap:18px;
+  margin-top:20px;
+}
+
+.foto-item{
+  background:#fff;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 3px 10px rgba(0,0,0,0.12);
+  transition:0.3s;
+  border:1px solid #e0e0e0;
+}
+
+.foto-item:hover{
+  transform:translateY(-4px);
+}
+
+.foto-item img{
+  width:100%;
+  height:180px; /* sebelumnya 250px */
+  object-fit:cover;
+  display:block;
+}
+
+.foto-item p{
+  padding:10px;
+  font-size:13px;
+  text-align:center;
+  line-height:1.5;
+  color:#444;
+}
+
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="desa-title">
+    <h1>Desa Kebutuh Jurang</h1>
+    <p>Kabupaten Banjarnegara</p>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="#beranda">Beranda</a></li>
+      <li><a href="#profil">Profil</a></li>
+      <li><a href="#struktur">Struktur</a></li>
+      <li><a href="#statistik">Statistik</a></li>
+      <li><a href="#umkm">UMKM</a></li>
+      <li><a href="#galeri">Galeri</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section id="beranda" class="hero">
+  <div class="overlay">
+    <h2>Selamat Datang di Desa Kebutuh Jurang</h2>
+    <p>website desa Kebutuh Jurang</p>
+  </div>
+</section>
+
+<div class="container">
+
+  <section id="profil" class="section">
+    <h3>Profil Desa</h3>
+    <b>Sejarah Desa</b>
+    <p>Desa Kebutuhjurang sebagai wilayah pegunungan dengan lokasi paling selatan di kabupaten banjarnegara berbatasan langsung dengan kabupaten kebumen dengan mayoritas kehidupan penduduk bermata pencaharian sebagai petani.</p>
+    <p>Di kota Banjarnegara terjadi kekacauan yang diakibatkan oleh penjajah Belanda yaitu kota Banjarnegara di bom oleh penjajah Belanda sehingga masyarakat kota mencari tempat berlindung, demi untuk mencari keselamatan penduduk kota Banjarnegara menyelamatkan diri ke arah selatan berlindung di hutan dan disana terdapat penduduk yang mayoritas kehidupannya sebagai petani, atas dasar tersebut mereka beranggapan bahwa hutan ini merupakan sebagai lokasi yang sangat membantu masyarakat kota pada waktu itu sebagai tempat berlindung, mencari nafkah dan mereka berlindung dari musuh. Atas dasar tersebut diatas maka wilayah ini diberi nama.</p>
+    <p>Wilayah ini diberi nama kebutuh dikarenakan wilayah ini sebagai pusat segala kebutuhan bagi masyarakat kota pada waktu itu. Dikarenakan di wilayah ini terlalu luas maka wilayah ini dibagi 2 desa yaitu Desa Kebutuhjurang dan Kebutuhduwur.</p>
+    <br>
+    <b>Visi</b>
+    <p>Menuju KebutuhJurang Maju, Sejahtera dan Bermanfaat</p>
+    <br>
+    <b>Misi</b>
+    <p>a. Peningkatan sarana prasarana infrastruktur lingkungan dan pemerintah desa</p>
+    <p>b. Peningkatan ekonomi masyarakat demi tercapainya masyarakat sejahtera</p>
+    <p>c. Menuju masyarakat berbudaya, religius untuk keadilan dan kemakmuran</p>
+    <br>
+ <div style="margin-top:20px;">
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!4v1779725235219!6m8!1m7!1sDoDASt3iCaUI5bDZcTGl8w!2m2!1d-7.478285472819469!2d109.6844835785459!3f205.91901696947986!4f4.633370570182166!5f0.7820865974627469"
+    width="100%"
+    height="450"
+    style="border:0; border-radius:12px;"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+
+  </section>
+
+  <section id="struktur" class="section">
+    <h3>Struktur Organisasi Desa</h3>
+    <div class="struktur-container">
+      <div class="jabatan kepala">
+        <div class="box">
+          <p>KEPALA DESA</p>
+          <h4>SUJARWO</h4>
+        </div>
+      </div>
+
+      <div class="jabatan sekretaris">
+        <div class="box">
+          <p>SEKRETARIS DESA</p>
+          <h4>AHMAD SUTARNO</h4>
+        </div>
+      </div>
+
+      <div class="kaur-row">
+        <div class="box kecil">
+          <p>KAUR TU DAN UMUM</p>
+          <h4>FAJAR</h4>
+        </div>
+        <div class="box kecil">
+          <p>KAUR KEUANGAN</p>
+          <h4>MASKUR</h4>
+        </div>
+        <div class="box kecil">
+          <p>KAUR PERENCANAAN</p>
+          <h4>KHAYUL TAUFIQ HIDAYAT</h4>
+        </div>
+      </div>
+
+      <div class="kasi-row">
+        <div class="box kecil">
+          <p>KASI PEMERINTAHAN</p>
+          <h4>HENDRA AGUS P</h4>
+        </div>
+        <div class="box kecil">
+          <p>KASI PELAYANAN</p>
+          <h4>ISWANDI NISWAN</h4>
+        </div>
+        <div class="box kecil">
+          <p>KASI KESEJAHTERAAN</p>
+          <h4>ALI HUSNA HILALUDIN</h4>
+        </div>
+      </div>
+
+      <div class="kadus-row">
+        <div class="oval">
+          <p>KADUS 1<br>MARON</p>
+          <h4>AHMAD KHAMIDIN</h4>
+        </div>
+        <div class="oval">
+          <p>KADUS 2<br>KARANG TENGAH</p>
+          <h4>FAJAR</h4>
+        </div>
+        <div class="oval">
+          <p>KADUS 3<br>BELOKAN</p>
+          <h4>SAIFULLOH</h4>
+        </div>
+        <div class="oval">
+          <p>KADUS 4<br>SIRONGGE</p>
+          <h4>MISNO</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="statistik" class="section">
+    <h3>Statistik Penduduk Desa</h3>
+    <div class="chart-container">
+      <div class="chart-box">
+        <h4>Statistik Usia</h4>
+        <div class="bar-item">
+          <span>Anak (0-14)</span>
+          <div class="bar"><div class="fill" style="width:25%">25%</div></div>
+        </div>
+        <div class="bar-item">
+          <span>Produktif (15-64)</span>
+          <div class="bar"><div class="fill" style="width:65%">65%</div></div>
+        </div>
+        <div class="bar-item">
+          <span>Lansia (65+)</span>
+          <div class="bar"><div class="fill" style="width:10%">10%</div></div>
+        </div>
+      </div>
+
+      <div class="chart-box">
+        <h4>Statistik Pekerjaan</h4>
+        <div class="bar-item">
+          <span>Petani</span>
+          <div class="bar"><div class="fill" style="width:70%">70%</div></div>
+        </div>
+        <div class="bar-item">
+          <span>Pedagang</span>
+          <div class="bar"><div class="fill" style="width:12%">12%</div></div>
+        </div>
+        <div class="bar-item">
+          <span>Buruh</span>
+          <div class="bar"><div class="fill" style="width:10%">10%</div></div>
+        </div>
+        <div class="bar-item">
+          <span>Lainnya</span>
+          <div class="bar"><div class="fill" style="width:8%">8%</div></div>
+        </div>
+      </div>
+
+      <div class="chart-box">
+        <h4>Statistik Pendidikan</h4>
+        <div class="bar-item">
+          <span>SD</span>
+          <div class="bar"><div class="fill" style="width:40%">40%</div></div>
+        </div>
+        <div class="bar-item">
+          <span>SMP</span>
+          <div class="bar"><div class="fill" style="width:30%">30%</div></div>
+        </div>
+        <div class="bar-item">
+          <span>SMA</span>
+          <div class="bar"><div class="fill" style="width:22%">22%</div></div>
+        </div>
+        <div class="bar-item">
+          <span>Kuliah</span>
+          <div class="bar"><div class="fill" style="width:8%">8%</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="umkm" class="section">
+    <h3>Daftar UMKM Desa</h3>
+    <div class="chart-container">
+      <div class="bar-item">
+        <span>Jasa Konveksi - 56.25%</span>
+        <div class="bar"><div class="fill konveksi" style="width:56.25%"></div></div>
+      </div>
+      <div class="bar-item">
+        <span>Gorengan - 12.5%</span>
+        <div class="bar"><div class="fill gorengan" style="width:12.5%"></div></div>
+      </div>
+      <div class="bar-item">
+        <span>Budidaya Jamur - 6.25%</span>
+        <div class="bar"><div class="fill jamur" style="width:6.25%"></div></div>
+      </div>
+      <div class="bar-item">
+        <span>Air Minum Isi Ulang - 6.25%</span>
+        <div class="bar"><div class="fill air" style="width:6.25%"></div></div>
+      </div>
+      <div class="bar-item">
+        <span>Bengkel Motor - 6.25%</span>
+        <div class="bar"><div class="fill bengkel" style="width:6.25%"></div></div>
+      </div>
+      <div class="bar-item">
+        <span>Peyek - 6.25%</span>
+        <div class="bar"><div class="fill peyek" style="width:6.25%"></div></div>
+      </div>
+      <div class="bar-item">
+        <span>Pecel - 6.25%</span>
+        <div class="bar"><div class="fill pecel" style="width:6.25%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeri" class="section">
+  <h3>Galeri Kegiatan Desa</h3>
+
+  <div class="gallery">
+
+    <div class="foto-item">
+      <img src="turnamen.jpg" alt="">
+      <p>Turnamen Sepak Bola Antar RW Kebutuh Jurang Cup 2025</p>
+    </div>
+
+    <div class="foto-item">
+      <img src="bersih-desa.jpg" alt="">
+      <p>Kegiatan Kerja Bakti dan Bersih Lingkungan Desa</p>
+    </div>
+
+    <div class="foto-item">
+      <img src="pawai.jpg" alt="">
+      <p>Pawai dan Kegiatan Kemerdekaan Desa</p>
+    </div>
+
+    <div class="foto-item">
+      <img src="gotongroyong.jpg" alt="">
+      <p>Gotong Royong Membersihkan Jalan Desa</p>
+    </div>
+
+    <div class="foto-item">
+      <img src="HUT_RI_ke-80.jpg" alt="">
+      <p>Acara HUT RI ke-80 di Desa Kebutuh Jurang Dusun Maron</p>
+    </div>
+
+    <div class="foto-item">
+      <img src="Latihan_Pensi.jpg" alt="">
+      <p>Latihan pensi untuk persiapan HUT RI Desa Kebutuh Jurang</p>
+    </div>
+
+    <div class="foto-item">
+      <img src="Pensi_Tari.jpg" alt="">
+      <p>Pentas seni tari nusantara saat HUT RI Desa Kebutuh Jurang</p>
+    </div>
+
+  </div>
+</section>
+
+  ...
+<section id="kontak" class="section">
+  <h3>Kontak & Pengaduan</h3>
+
+  <form id="pengaduanForm">
+
+    <input type="text" placeholder="Nama" required>
+
+    <input type="email" placeholder="Email" required>
+
+    <textarea placeholder="Pesan" required></textarea>
+
+    <button type="submit">Kirim</button>
+
+    <div id="notif"></div>
+
+  </form>
+</section>
+<script>
+const form = document.getElementById("pengaduanForm");
+const notif = document.getElementById("notif");
+
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+
+  notif.style.display = "block";
+  notif.innerHTML = "✅ Pesan berhasil dikirim!";
+
+  form.reset();
+
+  setTimeout(() => {
+    notif.style.display = "none";
+  }, 3000);
+});
+</script>
+</body>
+</html>
